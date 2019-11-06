@@ -14,8 +14,12 @@
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
+
 HWND hWnd;
-HWND childwin;
+HWND editControl;
+RECT editSize = { 100, 50 , 100, 100 };
+
+
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
@@ -117,7 +121,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 }
 
 
-RECT editSize = { 100, 50 , 100, 100 };
+
 
 BOOL CALLBACK EnumChildProc(HWND hwndChild, LPARAM lParam)
 {
@@ -138,11 +142,7 @@ BOOL CALLBACK EnumChildProc(HWND hwndChild, LPARAM lParam)
 		LONG newHeight = editSize.bottom * cyRate;
 		
 		MoveWindow(hwndChild, newRight, newTop, newWidth, newHeight, TRUE);
-		char buff1[100];
-		
-		sprintf_s(buff1, "X is:%s, Y is:%s", newRight, newTop);
-	
-		MessageBox(hWnd, (LPCWSTR)buff1, L"Pos", MB_OK | MB_ICONQUESTION);
+
 		// Make sure the child window is visible. 
 
 		ShowWindow(hwndChild, SW_SHOW);
@@ -159,9 +159,6 @@ BOOL CALLBACK EnumChildProc(HWND hwndChild, LPARAM lParam)
 //  WM_DESTROY  - post a quit message and return
 //
 //
-
-
-
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	RECT rcClient;
@@ -172,7 +169,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_CREATE:
 		// Create three invisible child windows. 
-		childwin = CreateWindowEx(0,
+		editControl = CreateWindowEx(0,
 				L"Edit",
 				(LPCTSTR)NULL,
 				WS_CHILD | WS_BORDER | WS_VISIBLE,
@@ -181,7 +178,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			   (HMENU)(int)ID_Edit1,
 				hInst,
 				NULL);
-			//GetClientRect(hWnd, &orginalSize);
+			
 		return 0;
 		
 	case WM_SIZE:
