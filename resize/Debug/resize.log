@@ -1,0 +1,8 @@
+﻿  resize.cpp
+D:\sample\resize\resize\resize.cpp(135,17): warning C4244: 'initializing': conversion from 'double' to 'LONG', possible loss of data
+D:\sample\resize\resize\resize.cpp(136,15): warning C4244: 'initializing': conversion from 'double' to 'LONG', possible loss of data
+D:\sample\resize\resize\resize.cpp(137,17): warning C4244: 'initializing': conversion from 'double' to 'LONG', possible loss of data
+D:\sample\resize\resize\resize.cpp(138,18): warning C4244: 'initializing': conversion from 'double' to 'LONG', possible loss of data
+D:\sample\resize\resize\resize.cpp(143,20): warning C4477: 'sprintf_s' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'LONG'
+D:\sample\resize\resize\resize.cpp(143,20): warning C4477: 'sprintf_s' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'LONG'
+  resize.vcxproj -> D:\sample\resize\Debug\resize.exe
